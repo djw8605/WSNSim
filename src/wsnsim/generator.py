@@ -13,7 +13,9 @@ def main():
     
     parser = optparse.OptionParser()
     AddOptions(parser)
-    
+    (opts, args) = parser.parse_args()
+    generator = GeneratorFile.GeneratorFile(opts.filename)
+    generator.parse()
     
 
 
