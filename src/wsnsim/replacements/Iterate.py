@@ -16,24 +16,31 @@ class Iterate:
         segments = iterate_string.split()
         
         # Segments should be:
-        # <range> step <step_size> [repeat <repeat_number]
+        # <range> step <step_size> [repeat <repeat_number>]
         # Where repeat is optional, default = 1
         
         # Get the range
         range_match = range_re.match(iterate_string)
-        (start, end) = range_match.groups()
-        print "Start = %s" % start
-        print "End = %s" % end
+        (self.start, self.end) = range_match.groups()
+        print "Start = %s" % self.start
+        print "End = %s" % self.end
         
         # Get the step
         try:
-            step_size = float(segments[2])
-            print "Step = %lf" % step_size
+            self.step_size = float(segments[2])
+            print "Step = %lf" % self.step_size
         except:
             print "Error parsing step: %s" % segments[2]
         
-        
-        
+        # Check for a repeats option
+        self.has_repeat = False
+        if len(segments) > 3:
+            self.has_repeat = True
+            try:
+                self.repeat = int(segments[4])
+                print "Repeats = %i" % self.repeat
+            except:
+                print "Error parsing repeat: %s" % segments[4]
         
 
         
