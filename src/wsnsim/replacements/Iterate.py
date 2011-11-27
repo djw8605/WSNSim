@@ -12,6 +12,9 @@ class Iterate(GenericReplacement):
         self.iterate_string = iterate_string
         self._parse(self.iterate_string)
         
+        self.pointer = self.start
+        
+        
     def _parse(self, iterate_string):
         # First, split the string
         segments = iterate_string.split()
@@ -46,4 +49,20 @@ class Iterate(GenericReplacement):
 
         print self.optional_params
 
+
+    def GetNextValue(self):
+        '''
+        Get the next value in the iteration.  
+        The values will roll over after GetNumberOfValues calls.
+        '''
+        toReturn = self.pointer
+        self.pointer += self.step_size
+        if self.pointer > self.end:
+            self.pointer = self.start
+            
+        return toReturn
+
+        
+    def GetNumberOfValues(self):
+        return int((self.start - self.start) / self.step_size)
         

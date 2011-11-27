@@ -21,3 +21,5 @@ class GeneratorFile:
         
         for (param_name, param_value) in config_params:
             self.params[param_name] = GetReplacement(param_value)
+
+        print self.params
