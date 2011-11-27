@@ -13,6 +13,7 @@ class Iterate(GenericReplacement):
         self._parse(self.iterate_string)
         
         self.pointer = self.start
+        self.repeat_counter = 0
         
         
     def _parse(self, iterate_string):
@@ -57,6 +58,14 @@ class Iterate(GenericReplacement):
         Get the next value in the iteration.  
         The values will roll over after GetNumberOfValues calls.
         '''
+        if self.optional_params.has_key("repeat"):
+            self.repeat_counter += 1
+            if self.repeat_counter >= int(self.optional_params["repeat"]):
+                self.repeat_counter = 0
+            else:
+                return self.pointer
+        
+        # If repeat is turned off, or it's time to iterate
         toReturn = self.pointer
         self.pointer += self.step_size
         if self.pointer > self.end:
@@ -66,7 +75,10 @@ class Iterate(GenericReplacement):
 
         
     def GetNumberOfValues(self):
-        return int((self.end - self.start) / self.step_size)
+        if self.optional_params.has_key("repeat"):
+            return int((self.end - self.start) / self.step_size) * int(self.optional_params["repeat"])
+        else:
+            return int((self.end - self.start) / self.step_size)
     
     
         
