@@ -26,6 +26,8 @@ class Iterate(GenericReplacement):
         # Get the range
         range_match = range_re.match(iterate_string)
         (self.start, self.end) = range_match.groups()
+        self.start = float(self.start)
+        self.end = float(self.end)
         print "Start = %s" % self.start
         print "End = %s" % self.end
         
@@ -64,5 +66,7 @@ class Iterate(GenericReplacement):
 
         
     def GetNumberOfValues(self):
-        return int((self.start - self.start) / self.step_size)
+        return int((self.end - self.start) / self.step_size)
+    
+    
         

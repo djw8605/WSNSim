@@ -23,3 +23,27 @@ class GeneratorFile:
             self.params[param_name] = GetReplacement(param_value)
 
         print self.params
+        
+        
+    def writeSimFile(self, simfile, destinationdir):
+        params_names = self.params.keys()
+        not_seen_list = params_names[1:]
+        current_param = params_names[0]
+        for i in range(self.params[params_names[0]].GetNumberOfValues()):
+            seen_dict = {current_param: self.params[current_param].GetNextValue()}
+            self._recursive_traverse(seen_dict, not_seen_list, simfile, destinationdir)
+        
+        
+    def _recursive_traverse(self, seen_dict, not_seen_list, simfile, destinationdir):
+        
+        if len(not_seen_list) == 0:
+            # Write out the file.
+            print seen_dict
+            return
+        
+        new_not_seen_list = not_seen_list[1:]
+        current_param = not_seen_list[0]
+        for i in range(self.params[current_param].GetNumberOfValues()):
+            seen_dict[current_param] = self.params[current_param].GetNextValue()
+            self._recursive_traverse(seen_dict, new_not_seen_list, simfile, destinationdir)
+        
