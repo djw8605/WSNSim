@@ -34,10 +34,14 @@ class Iterate:
         
         # Check for options parameters
         parsed_optional_params = segments[3:]
-        print parsed_optional_params
         self.optional_params = {}
-        for param_name, param_value in parsed_optional_params:
-            self.optional_params[param_name] = param_value
+        param_name = ""
+        for param in parsed_optional_params:
+            if param_name == "":
+                param_name = param
+            else:
+                self.optional_params[param_name] = param
+                param_name = ""
 
         print self.optional_params
 
