@@ -16,7 +16,7 @@ class Iterate:
         segments = iterate_string.split()
         
         # Segments should be:
-        # <range> step <step_size> [repeat <repeat_number>]
+        # <range> step <step_size> [default <default_number] [repeat <repeat_number>]
         # Where repeat is optional, default = 1
         
         # Get the range
@@ -32,15 +32,13 @@ class Iterate:
         except:
             print "Error parsing step: %s" % segments[2]
         
-        # Check for a repeats option
-        self.has_repeat = False
-        if len(segments) > 3:
-            self.has_repeat = True
-            try:
-                self.repeat = int(segments[4])
-                print "Repeats = %i" % self.repeat
-            except:
-                print "Error parsing repeat: %s" % segments[4]
-        
+        # Check for options parameters
+        parsed_optional_params = segments[3:]
+        print parsed_optional_params
+        self.optional_params = {}
+        for param_name, param_value in parsed_optional_params:
+            self.optional_params[param_name] = param_value
+
+        print self.optional_params
 
         

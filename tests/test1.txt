@@ -2,3 +2,10 @@
 
 param = [1.0..2.0] step 1
 param2 = [5..10] step 2
+
+repeat_param = [1..10] step 4 repeat 10
+
+default_param = [1000..10000] step 100 default 10
+
+
+
