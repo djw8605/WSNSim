@@ -1,0 +1,12 @@
+
+
+non_changed = asdf
+param = %(param)lf 
+param2 = %(param2)i
+
+repeat_param = %(repeat_param)i
+default_param = %(default_param)i
+
+
+
+
