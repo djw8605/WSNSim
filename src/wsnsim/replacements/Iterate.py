@@ -29,13 +29,13 @@ class Iterate(GenericReplacement):
         (self.start, self.end) = range_match.groups()
         self.start = float(self.start)
         self.end = float(self.end)
-        print "Start = %s" % self.start
-        print "End = %s" % self.end
+        #print "Start = %s" % self.start
+        #print "End = %s" % self.end
         
         # Get the step
         try:
             self.step_size = float(segments[2])
-            print "Step = %lf" % self.step_size
+            #print "Step = %lf" % self.step_size
         except:
             print "Error parsing step: %s" % segments[2]
         
@@ -50,7 +50,7 @@ class Iterate(GenericReplacement):
                 self.optional_params[param_name] = param
                 param_name = ""
 
-        print self.optional_params
+        #print self.optional_params
 
 
     def GetNextValue(self):
