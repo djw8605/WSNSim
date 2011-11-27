@@ -1,11 +1,12 @@
 
 
 import re
+from replacements.GenericReplacement import GenericReplacement
 
 range_re = re.compile("^\s*\[([\d]*\.{0,1}[\d]*)\.\.([\d]*\.{0,1}[\d]*)\]")
 
 
-class Iterate:
+class Iterate(GenericReplacement):
     def __init__(self, iterate_string):
         
         self.iterate_string = iterate_string
