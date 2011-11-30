@@ -59,8 +59,8 @@ class GeneratorFile:
             
             
     def WriteFile(self, simfile_string, replace_dict, destinationdir):
-        self._filecounter += 1
         output_filename = os.path.join(destinationdir, "submit%i.simconfig" % self._filecounter)
+        self._filecounter += 1
         self._simfiles.append(output_filename)
         
         f = open(output_filename, 'w')
