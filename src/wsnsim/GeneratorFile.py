@@ -42,6 +42,8 @@ class GeneratorFile:
             self._recursive_traverse(seen_dict, not_seen_list, simfile_string, destinationdir)
         
         print "Done"
+        return self._simfiles
+        
         
     def _recursive_traverse(self, seen_dict, not_seen_list, simfile_string, destinationdir):
         
