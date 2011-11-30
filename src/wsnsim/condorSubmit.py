@@ -9,7 +9,7 @@ class CondorSubmit:
     def init_submission_dict(self):
         self.submission_dict = {"universe": "vanilla",
                                 "log": "condor.log",
-                                "out": "output",
+                                "output": "output",
                                 "error": "error",
                                 "executable": "submission.sh",
                                 "should_transfer_files": "YES",
@@ -31,7 +31,7 @@ class CondorSubmit:
 
     def _writeCondorFile(self, file, fpointer):
         # Set the submission dict
-        self.submission_dict["out"] = file + ".out"
+        self.submission_dict["output"] = file + ".out"
         self.submission_dict["error"] = file + ".err"
         self.submission_dict["arguments"] = file
         self.submission_dict["transfer_input_files"] = file
