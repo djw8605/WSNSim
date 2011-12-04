@@ -7,5 +7,8 @@ repeat_param = [1..10] step 4 repeat 10
 
 default_param = [1000..10000] step 100 default 10
 
+[submission]
 
+tcl_loc = /home/swanson/dweitzel/projects/ns-allinone-2.29/tcl8.4.11.tar.gz
+ns_loc = /home/swanson/dweitzel/projects/ns-allinone-2.29/ns-2.29/ns
 
