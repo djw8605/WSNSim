@@ -39,8 +39,10 @@ class CondorSubmit:
             self.submission_files.append(submitfile_name)
             self._writeCondorFile(file, fpointer)
             dagfile.write("JOB %s %s\n" % (file, submitfile_name))
+            dagfile.write("CATEGORY %s simulation\n" % (file))
             fpointer.close()
             
+        dagfile.write("MAXJOBS simulation 10000")
         dagfile.close()
         
 
