@@ -42,7 +42,7 @@ class CondorSubmit:
             dagfile.write("CATEGORY %s simulation\n" % (file))
             fpointer.close()
             
-        dagfile.write("MAXJOBS simulation 10000")
+        dagfile.write("MAXJOBS simulation 10000\n")
         dagfile.close()
         
 
