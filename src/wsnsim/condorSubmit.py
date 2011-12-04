@@ -5,6 +5,7 @@ class CondorSubmit:
     def __init__(self, submission_file):
         self.submit_file = submission_file
         self.additional_input = []
+        self.submission_files = []
         self.init_submission_dict()
         
     def init_submission_dict(self):
@@ -29,12 +30,19 @@ class CondorSubmit:
             self.additional_input.append(file)    
     
     def writeSubmissionFile(self):
-        fpointer = open(self.submit_file, 'w')
+        
+        dagfile = open(self.submit_file, 'w')
         
         for file in self.simulationFiles:
+            submitfile_name = "%s.submit" % file
+            fpointer = open(submitfile_name, 'w')
+            self.submission_files.append(submitfile_name)
             self._writeCondorFile(file, fpointer)
+            dagfile.write("JOB %s %s\n" % (file, submitfile_name))
+            fpointer.close()
             
-        fpointer.close()
+        dagfile.close()
+        
 
 
     def _writeCondorFile(self, file, fpointer):
