@@ -1,7 +1,7 @@
 
 
 import re, sys, optparse
-
+import ConfigParser
 import GeneratorFile
 import condorSubmit
 
@@ -28,6 +28,12 @@ def main():
     
     condor_submit = condorSubmit.CondorSubmit(opts.submissionfile)
     condor_submit.setSimulationFiles(simfiles)
+    
+    config_parser = ConfigParser.ConfigParser()
+    config_parser.read(opts.filename)
+    tcl_location = config_parser.get("submission", "tcl_loc")
+    ns_location = config_parser.get("submission", "ns_loc")
+    condor_submit.setAdditionalTransferInputFiles([tcl_location, ns_location])
     condor_submit.writeSubmissionFile()
 
 
