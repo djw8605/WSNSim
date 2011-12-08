@@ -1,0 +1,23 @@
+DWSim Generator
+
+Welcome to the all singing, all dancing distributed wsn simulation generator.
+
+Dependencies:
+- Python 2.3+
+- Condor (http://research.cs.wisc.edu/condor/)
+
+==========
+RUNNING
+==========
+
+To run the generator, the primary executable is in src/wsnsim/generatory.py.
+Execute it with the -h option to see potential arguments.  For example, to 
+use the evualation included with the distribution, an example command is:
+
+$ python src/wsnsim/generator.py -f evualation/network_sim.conf -s evualation/NetworkPerformancetry.tcl -d output -u submit.dag
+
+Then, to submit the simulations, run the command
+$ condor_submit_dag submit.dag
+
+
+
