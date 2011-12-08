@@ -11,7 +11,7 @@ mv ns ns-2.29/
 ls -l
 pwd
 cd ns-2.29
-./ns ../NetworkPerformancetry.tcl
+./ns ../`basename $1`
 
 
 hostname
